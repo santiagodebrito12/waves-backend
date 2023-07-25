@@ -1,17 +1,18 @@
 import User from "../models/Users.js";
 
 const getUsers = async(req,res)=>{
-   
+ 
+    const users = await User.findAll();
+    console.log(users);
+    res.status(200).json({users}) 
+
 }
 
 const setNewUser = async( req , res) =>{
     
-    const name ="italo";
-    const email ="italo@gmail.com";
-    const password ="12";
-    const category = "surfing";
-    
+    const{name,email,password,category}=req.body;
 
+    
     const user = User.create({
         name,
         email,
